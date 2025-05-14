@@ -12,7 +12,7 @@ use Gzoonet\Crm\Models\Task;
 use Filament\Tables;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
-use App\Models\RecentActivity;
+use Gzoonet\Crm\Models\RecentActivity;
 use Illuminate\Database\Eloquent\Builder;
 
 class RecentActivityWidget extends BaseWidget
