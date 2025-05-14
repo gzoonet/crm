@@ -1,10 +1,10 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Widgets;
+namespace Gzoonet\Crm\Filament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use YourVendor\CrmPackage\Models\Customer;
+use Gzoonet\Crm\Models\Customer;
 use Carbon\Carbon;
 
 class NewCustomersThisMonthWidget extends BaseWidget

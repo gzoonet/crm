@@ -4,17 +4,17 @@ namespace Gzoonet\Crm;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use YourVendor\CrmPackage\Filament\Pages\Dashboard;
-use YourVendor\CrmPackage\Filament\Resources\CustomerResource;
-use YourVendor\CrmPackage\Filament\Resources\ContactResource;
-use YourVendor\CrmPackage\Filament\Resources\LeadResource;
-use YourVendor\CrmPackage\Filament\Resources\TaskResource;
-use YourVendor\CrmPackage\Filament\Resources\TagResource;
-use YourVendor\CrmPackage\Filament\Widgets\ActiveLeadsByStageWidget;
-use YourVendor\CrmPackage\Filament\Widgets\TasksDueThisWeekWidget;
-use YourVendor\CrmPackage\Filament\Widgets\RecentActivityWidget;
-use YourVendor\CrmPackage\Filament\Widgets\NewCustomersThisMonthWidget;
-use YourVendor\CrmPackage\Filament\Widgets\ConversionRateWidget;
+use Gzoonet\Crm\Filament\Pages\Dashboard;
+use Gzoonet\Crm\Filament\Resources\CustomerResource;
+use Gzoonet\Crm\Filament\Resources\ContactResource;
+use Gzoonet\Crm\Filament\Resources\LeadResource;
+use Gzoonet\Crm\Filament\Resources\TaskResource;
+use Gzoonet\Crm\Filament\Resources\TagResource;
+use Gzoonet\Crm\Filament\Widgets\ActiveLeadsByStageWidget;
+use Gzoonet\Crm\Filament\Widgets\TasksDueThisWeekWidget;
+use Gzoonet\Crm\Filament\Widgets\RecentActivityWidget;
+use Gzoonet\Crm\Filament\Widgets\NewCustomersThisMonthWidget;
+use Gzoonet\Crm\Filament\Widgets\ConversionRateWidget;
 
 class CrmPackageServiceProvider extends PackageServiceProvider
 {
@@ -47,38 +47,34 @@ class CrmPackageServiceProvider extends PackageServiceProvider
         // You can bind things to the container here, if needed.
     }
 
-    public function packageBooted(): void
-    {
-        // Filament auto-discovers resources, pages, and widgets if they are in the correct namespace
-        // and the service provider is registered. However, explicitly listing them here can be useful
-        // for clarity or if auto-discovery needs a hint, though usually not required for Filament 3.
+public function packageBooted(): void
+{
+    if (class_exists(\Filament\Filament::class)) {
+        \Filament\Facades\Filament::registerNavigationGroups([
+            'CRM',
+        ]);
 
-        // Ensure Filament is loaded before trying to access its services
-        if (class_exists(\Filament\Filament::class)) {
-            // This is usually handled by Filament auto-discovery based on your composer.json psr-4 autoloading
-            // and the conventional directory structure (app/Filament/Resources, app/Filament/Pages, app/Filament/Widgets).
-            // For a package, ensure your `FilamentServiceProvider` (if you have one, or this one) correctly registers them
-            // or that Filament can find them via the PSR-4 namespace.
+        \Filament\Facades\Filament::registerResources([
+            \Gzoonet\Crm\Filament\Resources\CustomerResource::class,
+            \Gzoonet\Crm\Filament\Resources\ContactResource::class,
+            \Gzoonet\Crm\Filament\Resources\LeadResource::class,
+            \Gzoonet\Crm\Filament\Resources\TaskResource::class,
+            \Gzoonet\Crm\Filament\Resources\TagResource::class,
+        ]);
 
-            // Example of how you might explicitly register if needed (usually not for Filament 3+ with standard structure)
-            // \Filament\Facades\Filament::registerResources([
-            //     CustomerResource::class,
-            //     ContactResource::class,
-            //     LeadResource::class,
-            //     TaskResource::class,
-            //     TagResource::class,
-            // ]);
-            // \Filament\Facades\Filament::registerPages([
-            //     Dashboard::class,
-            // ]);
-            // \Filament\Facades\Filament::registerWidgets([
-            //     ActiveLeadsByStageWidget::class,
-            //     TasksDueThisWeekWidget::class,
-            //     RecentActivityWidget::class,
-            //     NewCustomersThisMonthWidget::class,
-            //     ConversionRateWidget::class,
-            // ]);
-        }
+        \Filament\Facades\Filament::registerPages([
+            \Gzoonet\Crm\Filament\Pages\Dashboard::class,
+        ]);
+
+        \Filament\Facades\Filament::registerWidgets([
+            \Gzoonet\Crm\Filament\Widgets\ActiveLeadsByStageWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\TasksDueThisWeekWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\RecentActivityWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\NewCustomersThisMonthWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\ConversionRateWidget::class,
+        ]);
     }
+}
+
 }
 

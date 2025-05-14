@@ -1,10 +1,10 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Widgets;
+namespace Gzoonet\Crm\Filament\Widgets;
 
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
-use YourVendor\CrmPackage\Models\Task;
+use Gzoonet\Crm\Models\Task;
 use Carbon\Carbon;
 use Filament\Tables;
 
@@ -58,7 +58,7 @@ class TasksDueThisWeekWidget extends BaseWidget
     {
         return [
             Tables\Actions\Action::make('view')
-                ->url(fn (Task $record): string => \YourVendor\CrmPackage\Filament\Resources\TaskResource::getUrl('view', ['record' => $record]))
+                ->url(fn (Task $record): string => \Gzoonet\Crm\Filament\Resources\TaskResource::getUrl('view', ['record' => $record]))
                 ->icon('heroicon-o-eye'),
         ];
     }

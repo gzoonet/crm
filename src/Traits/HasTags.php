@@ -1,13 +1,13 @@
 <?php
 
-namespace YourVendor\CrmPackage\Traits;
+namespace Gzoonet\Crm\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use YourVendor\CrmPackage\Models\Tag;
+use Gzoonet\Crm\Models\Tag;
 
 /**
  * Trait HasTags
- * @package YourVendor\CrmPackage\Traits
+ * @package Gzoonet\Crm\Traits
  */
 trait HasTags
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources;
+namespace Gzoonet\Crm\Filament\Resources;
 
-use YourVendor\CrmPackage\Filament\Resources\CustomerResource\Pages;
-use YourVendor\CrmPackage\Filament\Resources\RelationManagers\NotesRelationManager;
-use YourVendor\CrmPackage\Models\Customer;
-use YourVendor\CrmPackage\Models\Tag; // Import Tag model
+use Gzoonet\Crm\Filament\Resources\CustomerResource\Pages;
+use Gzoonet\Crm\Filament\Resources\RelationManagers\NotesRelationManager;
+use Gzoonet\Crm\Models\Customer;
+use Gzoonet\Crm\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,8 +13,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\TagsInput; // Import TagsInput
-use Filament\Tables\Filters\SelectFilter; // Import SelectFilter for tags
+use Filament\Forms\Components\TagsInput;
+use Filament\Tables\Filters\SelectFilter;
 
 class CustomerResource extends Resource
 {
@@ -26,63 +26,51 @@ class CustomerResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->unique(Customer::class, 'email', ignoreRecord: true)
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('company')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('industry')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('notes') // This is the main notes field for the customer, not the polymorphic notes.
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('source')
-                    ->maxLength(255),
-                Forms\Components\Select::make('status')
-                    ->options([
-                        'lead' => 'Lead',
-                        'contacted' => 'Contacted',
-                        'customer' => 'Customer',
-                        'archived' => 'Archived',
-                    ])
-                    ->searchable(),
-                TagsInput::make('tags') // Add TagsInput field
-                    ->label('Tags')
-                    ->suggestions(
-                        Tag::all()->pluck('name')->toArray()
-                    )
-                    ->relationship('tags', 'name') // Assumes 'tags' relationship exists on Customer model and 'name' is the display attribute on Tag model
-                    ->columnSpanFull(),
-            ]);
+        return $form->schema([
+            Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('email')
+                ->email()
+                ->unique(Customer::class, 'email', ignoreRecord: true)
+                ->maxLength(255),
+            Forms\Components\TextInput::make('phone')
+                ->tel()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('company')
+                ->maxLength(255),
+            Forms\Components\TextInput::make('industry')
+                ->maxLength(255),
+            Forms\Components\Textarea::make('notes')
+                ->columnSpanFull(),
+            Forms\Components\TextInput::make('source')
+                ->maxLength(255),
+            Forms\Components\Select::make('status')
+                ->options([
+                    'lead' => 'Lead',
+                    'contacted' => 'Contacted',
+                    'customer' => 'Customer',
+                    'archived' => 'Archived',
+                ])
+                ->searchable(),
+            TagsInput::make('tags')
+                ->label('Tags')
+                ->suggestions(Tag::all()->pluck('name')->toArray())
+                ->relationship('tags', 'name')
+                ->columnSpanFull(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('company')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('tags.name') // Display tags
+                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('phone')->searchable(),
+                Tables\Columns\TextColumn::make('company')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('status')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('tags.name')
                     ->label('Tags')
                     ->badge()
                     ->searchable(),
@@ -97,7 +85,7 @@ class CustomerResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
-                SelectFilter::make('tags') // Add filter for tags
+                SelectFilter::make('tags')
                     ->relationship('tags', 'name')
                     ->multiple()
                     ->preload()
@@ -145,4 +133,3 @@ class CustomerResource extends Resource
             ]);
     }
 }
-

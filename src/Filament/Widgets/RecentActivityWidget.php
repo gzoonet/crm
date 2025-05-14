@@ -1,15 +1,15 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Widgets;
+namespace Gzoonet\Crm\Filament\Widgets;
 
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
-use YourVendor\CrmPackage\Models\Customer;
-use YourVendor\CrmPackage\Models\Contact;
-use YourVendor\CrmPackage\Models\Lead;
-use YourVendor\CrmPackage\Models\Task;
-use YourVendor\CrmPackage\Models\Note;
+use Gzoonet\Crm\Models\Customer;
+use Gzoonet\Crm\Models\Contact;
+use Gzoonet\Crm\Models\Lead;
+use Gzoonet\Crm\Models\Task;
+use Gzoonet\Crm\Models\Note;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
@@ -85,16 +85,16 @@ class RecentActivityWidget extends BaseWidget
 
                     switch ($record->model_type) {
                         case "Customer":
-                            $url = \YourVendor\CrmPackage\Filament\Resources\CustomerResource::getUrl("view", ["record" => $record->id]);
+                            $url = \Gzoonet\Crm\Filament\Resources\CustomerResource::getUrl("view", ["record" => $record->id]);
                             break;
                         case "Contact":
-                            $url = \YourVendor\CrmPackage\Filament\Resources\ContactResource::getUrl("view", ["record" => $record->id]);
+                            $url = \Gzoonet\Crm\Filament\Resources\ContactResource::getUrl("view", ["record" => $record->id]);
                             break;
                         case "Lead":
-                            $url = \YourVendor\CrmPackage\Filament\Resources\LeadResource::getUrl("view", ["record" => $record->id]);
+                            $url = \Gzoonet\Crm\Filament\Resources\LeadResource::getUrl("view", ["record" => $record->id]);
                             break;
                         case "Task":
-                            $url = \YourVendor\CrmPackage\Filament\Resources\TaskResource::getUrl("view", ["record" => $record->id]);
+                            $url = \Gzoonet\Crm\Filament\Resources\TaskResource::getUrl("view", ["record" => $record->id]);
                             break;
                         case "Note":
                             // For notes, link to the parent record (Customer, Lead, etc.)
@@ -102,19 +102,19 @@ class RecentActivityWidget extends BaseWidget
                                 $noteableType = class_basename($record->noteable_type);
                                 switch ($noteableType) {
                                     case "Customer":
-                                        $url = \YourVendor\CrmPackage\Filament\Resources\CustomerResource::getUrl("view", ["record" => $record->noteable_id]);
+                                        $url = \Gzoonet\Crm\Filament\Resources\CustomerResource::getUrl("view", ["record" => $record->noteable_id]);
                                         $subject = "Note on: " . ($record->noteable->name ?? 'N/A');
                                         break;
                                     case "Contact":
-                                        $url = \YourVendor\CrmPackage\Filament\Resources\ContactResource::getUrl("view", ["record" => $record->noteable_id]);
+                                        $url = \Gzoonet\Crm\Filament\Resources\ContactResource::getUrl("view", ["record" => $record->noteable_id]);
                                         $subject = "Note on: " . ($record->noteable->first_name ?? 'N/A') . " " . ($record->noteable->last_name ?? '');
                                         break;
                                     case "Lead":
-                                        $url = \YourVendor\CrmPackage\Filament\Resources\LeadResource::getUrl("view", ["record" => $record->noteable_id]);
+                                        $url = \Gzoonet\Crm\Filament\Resources\LeadResource::getUrl("view", ["record" => $record->noteable_id]);
                                         $subject = "Note on: " . ($record->noteable->company_name ?? 'N/A');
                                         break;
                                     case "Task":
-                                        $url = \YourVendor\CrmPackage\Filament\Resources\TaskResource::getUrl("view", ["record" => $record->noteable_id]);
+                                        $url = \Gzoonet\Crm\Filament\Resources\TaskResource::getUrl("view", ["record" => $record->noteable_id]);
                                         $subject = "Note on: " . ($record->noteable->title ?? 'N/A');
                                         break;
                                 }

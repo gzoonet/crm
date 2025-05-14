@@ -1,11 +1,11 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources;
+namespace Gzoonet\Crm\Filament\Resources;
 
-use YourVendor\CrmPackage\Filament\Resources\LeadResource\Pages;
-use YourVendor\CrmPackage\Filament\Resources\RelationManagers\NotesRelationManager;
-use YourVendor\CrmPackage\Models\Lead;
-use YourVendor\CrmPackage\Models\Tag;
+use Gzoonet\Crm\Filament\Resources\LeadResource\Pages;
+use Gzoonet\Crm\Filament\Resources\RelationManagers\NotesRelationManager;
+use Gzoonet\Crm\Models\Lead;
+use Gzoonet\Crm\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

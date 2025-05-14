@@ -1,8 +1,8 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources\ContactResource\Pages;
+namespace Gzoonet\Crm\Filament\Resources\ContactResource\Pages;
 
-use YourVendor\CrmPackage\Filament\Resources\ContactResource;
+use Gzoonet\Crm\Filament\Resources\ContactResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

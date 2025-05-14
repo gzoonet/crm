@@ -1,9 +1,9 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources;
+namespace Gzoonet\Crm\Filament\Resources;
 
-use YourVendor\CrmPackage\Filament\Resources\TagResource\Pages;
-use YourVendor\CrmPackage\Models\Tag;
+use Gzoonet\Crm\Filament\Resources\TagResource\Pages;
+use Gzoonet\Crm\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

@@ -1,10 +1,10 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Widgets;
+namespace Gzoonet\Crm\Filament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use YourVendor\CrmPackage\Models\Lead;
+use Gzoonet\Crm\Models\Lead;
 use Carbon\Carbon;
 
 class ConversionRateWidget extends BaseWidget

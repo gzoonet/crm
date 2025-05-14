@@ -1,8 +1,8 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources\TaskResource\Pages;
+namespace Gzoonet\Crm\Filament\Resources\TaskResource\Pages;
 
-use YourVendor\CrmPackage\Filament\Resources\TaskResource;
+use Gzoonet\Crm\Filament\Resources\TaskResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

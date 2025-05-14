@@ -1,12 +1,12 @@
 <?php
 
-namespace YourVendor\CrmPackage\Models;
+namespace Gzoonet\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use YourVendor\CrmPackage\Traits\HasNotes;
-use YourVendor\CrmPackage\Traits\HasTags;
+use Gzoonet\Crm\Traits\HasNotes;
+use Gzoonet\Crm\Traits\HasTags;
 
 class Lead extends Model
 {
@@ -47,7 +47,7 @@ class Lead extends Model
     // If using a factory for seeding/testing
     // protected static function newFactory()
     // {
-    //     return \YourVendor\CrmPackage\Database\Factories\LeadFactory::new();
+    //     return \Gzoonet\Crm\Database\Factories\LeadFactory::new();
     // }
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\CrmPackage\Models;
+namespace Gzoonet\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -56,7 +56,7 @@ class Tag extends Model
     // If using a factory for seeding/testing
     // protected static function newFactory()
     // {
-    //     return \YourVendor\CrmPackage\Database\Factories\TagFactory::new();
+    //     return \Gzoonet\Crm\Database\Factories\TagFactory::new();
     // }
 }
 

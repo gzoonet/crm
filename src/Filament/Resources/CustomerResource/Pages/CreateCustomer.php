@@ -1,8 +1,8 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources\CustomerResource\Pages;
+namespace Gzoonet\Crm\Filament\Resources\CustomerResource\Pages;
 
-use YourVendor\CrmPackage\Filament\Resources\CustomerResource;
+use Gzoonet\Crm\Filament\Resources\CustomerResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

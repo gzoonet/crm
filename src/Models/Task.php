@@ -1,13 +1,13 @@
 <?php
 
-namespace YourVendor\CrmPackage\Models;
+namespace Gzoonet\Crm\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use YourVendor\CrmPackage\Traits\HasNotes;
-use YourVendor\CrmPackage\Traits\HasTags; // Import the HasTags trait
+use Gzoonet\Crm\Traits\HasNotes;
+use Gzoonet\Crm\Traits\HasTags; // Import the HasTags trait
 
 class Task extends Model
 {
@@ -41,7 +41,7 @@ class Task extends Model
     // If using a factory for seeding/testing
     // protected static function newFactory()
     // {
-    //     return \YourVendor\CrmPackage\Database\Factories\TaskFactory::new();
+    //     return \Gzoonet\Crm\Database\Factories\TaskFactory::new();
     // }
 }
 

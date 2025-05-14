@@ -1,12 +1,12 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources;
+namespace Gzoonet\Crm\Filament\Resources;
 
-use YourVendor\CrmPackage\Filament\Resources\TaskResource\Pages;
-use YourVendor\CrmPackage\Filament\Resources\RelationManagers\NotesRelationManager;
-use YourVendor\CrmPackage\Models\Task;
-use YourVendor\CrmPackage\Models\Customer;
-use YourVendor\CrmPackage\Models\Tag; // Import Tag model
+use Gzoonet\Crm\Filament\Resources\TaskResource\Pages;
+use Gzoonet\Crm\Filament\Resources\RelationManagers\NotesRelationManager;
+use Gzoonet\Crm\Models\Task;
+use Gzoonet\Crm\Models\Customer;
+use Gzoonet\Crm\Models\Tag; // Import Tag model
 use App\Models\User; // Assuming User model is in App\Models
 use Filament\Forms;
 use Filament\Forms\Form;

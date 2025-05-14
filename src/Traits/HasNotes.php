@@ -1,13 +1,13 @@
 <?php
 
-namespace YourVendor\CrmPackage\Traits;
+namespace Gzoonet\Crm\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use YourVendor\CrmPackage\Models\Note;
+use Gzoonet\Crm\Models\Note;
 
 /**
  * Trait HasNotes
- * @package YourVendor\CrmPackage\Traits
+ * @package Gzoonet\Crm\Traits
  */
 trait HasNotes
 {

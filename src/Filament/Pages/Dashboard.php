@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Pages;
+namespace Gzoonet\Crm\Filament\Pages;
 
 use Filament\Pages\Dashboard as BaseDashboard;
 

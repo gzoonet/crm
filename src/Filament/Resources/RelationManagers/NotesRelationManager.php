@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Resources\RelationManagers;
+namespace Gzoonet\Crm\Filament\Resources\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -8,7 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use YourVendor\CrmPackage\Models\Note;
+use Gzoonet\Crm\Models\Note;
 
 class NotesRelationManager extends RelationManager
 {

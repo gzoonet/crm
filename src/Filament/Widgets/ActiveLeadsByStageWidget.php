@@ -1,9 +1,9 @@
 <?php
 
-namespace YourVendor\CrmPackage\Filament\Widgets;
+namespace Gzoonet\Crm\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use YourVendor\CrmPackage\Models\Lead;
+use Gzoonet\Crm\Models\Lead;
 use Illuminate\Support\Facades\DB;
 
 class ActiveLeadsByStageWidget extends ChartWidget
