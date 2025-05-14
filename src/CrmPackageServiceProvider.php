@@ -26,7 +26,7 @@ class CrmPackageServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name("crm-package") // Match the composer.json name, but kebab-case
+            ->name("gzoonet-crm") // Match the composer.json name, but kebab-case
             ->hasConfigFile() // If you have a config file, e.g., config/crm-package.php
             // ->hasViews() // If you have views
             ->hasMigrations([
