@@ -9,7 +9,8 @@ use Carbon\Carbon;
 
 class NewCustomersThisMonthWidget extends BaseWidget
 {
-    protected static ?string $heading = "New Customers This Month";
+    protected ?string $heading = 'New Customers This Month';
+
 
     protected static ?int $sort = 4; // Order of the widget on the dashboard
 
@@ -62,7 +63,7 @@ class NewCustomersThisMonthWidget extends BaseWidget
         ];
     }
 
-    protected function getChartData(Carbon $startDate, Carbon $endDate): array
+    public function getChartData(Carbon $startDate, Carbon $endDate): array
     {
         $data = Customer::query()
             ->selectRaw("DATE(created_at) as date, COUNT(*) as count")

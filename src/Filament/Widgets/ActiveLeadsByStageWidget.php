@@ -14,7 +14,7 @@ class ActiveLeadsByStageWidget extends ChartWidget
 
     protected static ?int $sort = 1; // Order of the widget on the dashboard
 
-    protected function getData(): array
+    public function getData(): array
     {
         $leadStages = Lead::query()
             ->select('stage', DB::raw('count(*) as count'))

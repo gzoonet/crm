@@ -8,20 +8,24 @@ class Dashboard extends BaseDashboard
 {
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    protected static string $routePath = 'dashboard'; // Default, can be customized
+    protected static string $routePath = 'dashboard';
 
-    protected static ?int $navigationSort = -2; // To appear at the top
+    protected static ?int $navigationSort = -2;
 
     public function getWidgets(): array
     {
         return [
-            // Widgets will be added here later
+            \Gzoonet\Crm\Filament\Widgets\ActiveLeadsByStageWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\TasksDueThisWeekWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\RecentActivityWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\NewCustomersThisMonthWidget::class,
+            \Gzoonet\Crm\Filament\Widgets\ConversionRateWidget::class,
         ];
     }
 
     public function getColumns(): int | string | array
     {
-        return 2; // Default dashboard columns, can be adjusted
+        return 2;
     }
 
     public function getTitle(): string
@@ -29,4 +33,3 @@ class Dashboard extends BaseDashboard
         return static::$title ?? __('filament-panels::pages/dashboard.title');
     }
 }
-

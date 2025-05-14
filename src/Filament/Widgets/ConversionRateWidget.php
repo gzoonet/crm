@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class ConversionRateWidget extends BaseWidget
 {
-    protected static ?string $heading = "Lead Conversion Rate (Last 30 Days)";
+    protected ?string $heading = "Lead Conversion Rate (Last 30 Days)";
 
     protected static ?int $sort = 5; // Order of the widget on the dashboard
 
