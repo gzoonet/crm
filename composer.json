@@ -1,12 +1,12 @@
 {
-    "name": "your-vendor/crm-package",
+    "name": "gzoonet/crm",
     "description": "A comprehensive CRM plugin for Filament 3.",
-    "type": "laravel-package",
-    "license": "MIT",
+    "type": "library",
+    "license": "None",
     "authors": [
         {
-            "name": "Manus AI",
-            "email": "manus@example.com"
+            "name": "GZOO Media",
+            "email": "eddy@gzoo.net"
         }
     ],
     "require": {
@@ -17,21 +17,21 @@
     },
     "autoload": {
         "psr-4": {
-            "YourVendor\\CrmPackage\\": "src/"
+            "Gzoonet\\Crm\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "YourVendor\\CrmPackage\\Tests\\": "tests/"
+            "Gzoonet\\Crm\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YourVendor\\CrmPackage\\CrmPackageServiceProvider"
+                "Gzoonet\\Crm\\CrmPackageServiceProvider"
             ],
             "aliases": {
-                "CrmPackage": "YourVendor\\CrmPackage\\Facades\\CrmPackage"
+                "CrmPackage": "Gzoonet\\Crm\\Facades\\CrmPackage"
             }
         }
     },
@@ -41,4 +41,3 @@
         "sort-packages": true
     }
 }
-
