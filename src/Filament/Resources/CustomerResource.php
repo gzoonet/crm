@@ -53,11 +53,13 @@ class CustomerResource extends Resource
                     'archived' => 'Archived',
                 ])
                 ->searchable(),
-            TagsInput::make('tags')
+                Forms\Components\CheckboxList::make('tags')
                 ->label('Tags')
-                ->suggestions(Tag::all()->pluck('name')->toArray())
-                ->relationship('tags', 'name')
+                ->relationship('tags', 'name') // ← uses the actual column on the tags table
+                ->columns(2)
+                ->searchable()
                 ->columnSpanFull(),
+            
         ]);
     }
 

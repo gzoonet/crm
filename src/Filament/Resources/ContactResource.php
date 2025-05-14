@@ -29,7 +29,7 @@ class ContactResource extends Resource
     {
         return $form->schema([
             Forms\Components\Select::make('customer_id')
-                ->relationship('customer', 'name')
+                ->relationship('customer', 'email')
                 ->searchable()
                 ->preload()
                 ->required(),

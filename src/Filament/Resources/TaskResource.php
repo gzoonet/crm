@@ -47,7 +47,7 @@ class TaskResource extends Resource
                     ->default('open'),
                 Forms\Components\Select::make('assigned_to_user_id')
                     ->label('Assigned To')
-                    ->relationship('assignedToUser', 'name') // Assumes User model has 'name' attribute
+                    ->relationship('assignedToUser', 'email') // Assumes User model has 'name' attribute
                     ->searchable()
                     ->preload(),
                 Forms\Components\Select::make('related_customer_id')
