@@ -17,7 +17,7 @@ use Gzoonet\Crm\Filament\Widgets\RecentActivityWidget;
 use Gzoonet\Crm\Filament\Widgets\NewCustomersThisMonthWidget;
 use Gzoonet\Crm\Filament\Widgets\ConversionRateWidget;
 
-class CrmPackageServiceProvider extends PackageServiceProvider
+class ContactResource extends Resource
 {
     public function configurePackage(Package $package): void
     {
