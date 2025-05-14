@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create("notes", function (Blueprint $table) {
             $table->id();
             $table->text("body");
-            $table->morphs("notable"); // notable_id, notable_type
+$table->string("notable_type", 191);
+$table->unsignedBigInteger("notable_id");
+$table->index(["notable_type", "notable_id"]);
+
             $table->foreignId("user_id")->nullable()->constrained("users")->onDelete("set null"); // User who created the note
             $table->timestamps();
         });
