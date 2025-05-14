@@ -55,13 +55,13 @@ class TaskResource extends Resource
                     ->relationship('customer', 'name')
                     ->searchable()
                     ->preload(),
-                TagsInput::make('tags') // Add TagsInput field
-                    ->label('Tags')
-                    ->suggestions(
-                        Tag::all()->pluck('name')->toArray()
-                    )
-                    ->relationship('tags', 'name') // Assumes 'tags' relationship exists on Task model and 'name' is the display attribute on Tag model
-                    ->columnSpanFull(),
+Forms\Components\CheckboxList::make('tags')
+    ->label('Tags')
+    ->relationship('tags', 'name')
+    ->columns(2)
+    ->searchable()
+    ->columnSpanFull(),
+
             ]);
     }
 

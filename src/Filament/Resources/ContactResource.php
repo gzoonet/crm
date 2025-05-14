@@ -49,13 +49,13 @@ class ContactResource extends Resource
                 ->maxLength(255),
             Forms\Components\Textarea::make('notes')
                 ->columnSpanFull(),
-            TagsInput::make('tags')
-                ->label('Tags')
-                ->suggestions(
-                    Tag::all()->pluck('name')->toArray()
-                )
-                ->relationship('tags', 'name')
-                ->columnSpanFull(),
+Forms\Components\CheckboxList::make('tags')
+    ->label('Tags')
+    ->relationship('tags', 'name')
+    ->columns(2)
+    ->searchable()
+    ->columnSpanFull(),
+
         ]);
     }
 
