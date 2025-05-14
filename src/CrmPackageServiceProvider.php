@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\CrmPackage;
+namespace Gzoonet\Crm;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
