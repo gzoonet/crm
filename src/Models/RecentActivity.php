@@ -8,7 +8,7 @@ class RecentActivity extends Model
 {
     public $timestamps = false;
 
-    protected $table = 'recent_activity';
+    protected $table = 'recent_activity'; // Not a real table, just placeholder for fromSub()
 
     protected $guarded = [];
 }

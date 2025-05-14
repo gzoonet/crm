@@ -12,7 +12,9 @@ use Gzoonet\Crm\Models\Task;
 use Filament\Tables;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
+use App\Models\RecentActivity;
 use Illuminate\Database\Eloquent\Builder;
+
 class RecentActivityWidget extends BaseWidget
 {
     protected static ?string $heading = 'Recent Activity';
@@ -23,47 +25,45 @@ class RecentActivityWidget extends BaseWidget
 
     protected static ?string $pollingInterval = '15s';
 
-    public function getTableQuery(): Builder
-    {
-        $customers = Customer::query()
-            ->selectRaw("'Customer created' as activity_type, name as subject, created_at, id, 'Customer' as model_type")
-            ->where("created_at", ">=", now()->subDays(7));
+public function getTableQuery(): Builder
+{
+    $customers = Customer::query()
+        ->selectRaw("'Customer created' as activity_type, name as subject, created_at, id, 'Customer' as model_type")
+        ->where("created_at", ">=", now()->subDays(7));
 
-        $contacts = Contact::query()
-            ->selectRaw("'Contact created' as activity_type, CONCAT(first_name, ' ', last_name) as subject, created_at, id, 'Contact' as model_type")
-            ->where("created_at", ">=", now()->subDays(7));
+    $contacts = Contact::query()
+        ->selectRaw("'Contact created' as activity_type, CONCAT(first_name, ' ', last_name) as subject, created_at, id, 'Contact' as model_type")
+        ->where("created_at", ">=", now()->subDays(7));
 
-        $leads = Lead::query()
-            ->selectRaw("'Lead created' as activity_type, company_name as subject, created_at, id, 'Lead' as model_type")
-            ->where("created_at", ">=", now()->subDays(7));
+    $leads = Lead::query()
+        ->selectRaw("'Lead created' as activity_type, company_name as subject, created_at, id, 'Lead' as model_type")
+        ->where("created_at", ">=", now()->subDays(7));
 
-        $leadUpdates = Lead::query()
-            ->selectRaw("CONCAT('Lead updated to ', stage) as activity_type, company_name as subject, updated_at as created_at, id, 'Lead' as model_type")
-            ->where("updated_at", ">=", now()->subDays(7))
-            ->whereColumn("created_at", "!=", "updated_at");
+    $leadUpdates = Lead::query()
+        ->selectRaw("CONCAT('Lead updated to ', stage) as activity_type, company_name as subject, updated_at as created_at, id, 'Lead' as model_type")
+        ->where("updated_at", ">=", now()->subDays(7))
+        ->whereColumn("created_at", "!=", "updated_at");
 
-        $tasks = Task::query()
-            ->selectRaw("'Task created' as activity_type, title as subject, created_at, id, 'Task' as model_type")
-            ->where("created_at", ">=", now()->subDays(7));
+    $tasks = Task::query()
+        ->selectRaw("'Task created' as activity_type, title as subject, created_at, id, 'Task' as model_type")
+        ->where("created_at", ">=", now()->subDays(7));
 
-        $taskUpdates = Task::query()
-            ->selectRaw("CONCAT('Task status: ', status) as activity_type, title as subject, updated_at as created_at, id, 'Task' as model_type")
-            ->where("updated_at", ">=", now()->subDays(7))
-            ->whereColumn("created_at", "!=", "updated_at");
+    $taskUpdates = Task::query()
+        ->selectRaw("CONCAT('Task status: ', status) as activity_type, title as subject, updated_at as created_at, id, 'Task' as model_type")
+        ->where("updated_at", ">=", now()->subDays(7))
+        ->whereColumn("created_at", "!=", "created_at");
 
-        // Build the union
-        $union = $leads
-            ->unionAll($leadUpdates)
-            ->unionAll($customers)
-            ->unionAll($contacts)
-            ->unionAll($tasks)
-            ->unionAll($taskUpdates);
+    $union = $leads
+        ->unionAll($leadUpdates)
+        ->unionAll($customers)
+        ->unionAll($contacts)
+        ->unionAll($tasks)
+        ->unionAll($taskUpdates);
 
-        // Wrap in subquery so MySQL can sort it
-        return DB::query()
-            ->fromSub($union, 'recent_activity')
-            ->orderBy('created_at', 'desc');
-    }
+    return RecentActivity::query()
+        ->fromSub($union, 'recent_activity')
+        ->orderBy('created_at', 'desc');
+}
 
     protected function getTableColumns(): array
     {
